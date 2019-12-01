@@ -12,13 +12,15 @@ export class TodoItem extends Component {
   }
 
   render() {
-    const { id, title } = this.props.todo
+    const { id, title, completed } = this.props.todo
+    const isChecked = completed
     return (
       // <div style={{ backgroundColor: '#f4f4f4'}}> //OR
       // <div style={itemStyle}> // with constant // OR
       <div style={this.getStyle()}>
         <p>
-          <input type="checkbox" onChange={this.props.markComplete.bind(this, id)} />{' '}
+          <input type="checkbox" onChange={this.props.markComplete.bind(this, id)} checked={isChecked}/>
+          {' '}
           {title}
           <button onClick={this.props.deleteTodo.bind(this, id)} style={btnStyle}>x</button>
         </p>
