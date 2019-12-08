@@ -14,8 +14,6 @@ function TodoItem({ todo, delTodo, markComplete }) {
   const { id, title, completed } = todo;
   const isChecked = completed;
   return (
-    // <div style={{ backgroundColor: '#f4f4f4'}}> //OR
-    // <div style={itemStyle}> // with constant // OR
     <div style={getStyle()}>
       <p>
         <input type="checkbox" onChange={markComplete.bind(this, id)} checked={isChecked} />
@@ -26,11 +24,6 @@ function TodoItem({ todo, delTodo, markComplete }) {
     </div>
   );
 }
-/*
-const itemStyle = {
-  backgroundColor: '#f4f4f4'
-}
-*/
 
 const btnStyle = {
   background: '#ff0000',
