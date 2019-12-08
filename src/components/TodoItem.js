@@ -1,32 +1,30 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 
-export class TodoItem extends Component {
-  getStyle = () => {
+function TodoItem({ todo, delTodo, markComplete }) {
+  const getStyle = () => {
     return {
-      textDecoration: this.props.todo.completed ? 'line-through' : 'none',
+      textDecoration: todo.completed ? 'line-through' : 'none',
       backgroundColor: '#f4f4f4',
       padding: '1px',
       borderBottom: '1px #ccc dotted'
-    }
+    };
   }
 
-  render() {
-    const { id, title, completed } = this.props.todo
-    const isChecked = completed
-    return (
-      // <div style={{ backgroundColor: '#f4f4f4'}}> //OR
-      // <div style={itemStyle}> // with constant // OR
-      <div style={this.getStyle()}>
-        <p>
-          <input type="checkbox" onChange={this.props.markComplete.bind(this, id)} checked={isChecked}/>
-          {' '}
-          {title}
-          <button onClick={this.props.delTodo.bind(this, id)} style={btnStyle}>x</button>
-        </p>
-      </div>
-    )
-  }
+  const { id, title, completed } = todo;
+  const isChecked = completed;
+  return (
+    // <div style={{ backgroundColor: '#f4f4f4'}}> //OR
+    // <div style={itemStyle}> // with constant // OR
+    <div style={getStyle()}>
+      <p>
+        <input type="checkbox" onChange={markComplete.bind(this, id)} checked={isChecked} />
+        {' '}
+        {title}
+        <button onClick={delTodo.bind(this, id)} style={btnStyle}>x</button>
+      </p>
+    </div>
+  );
 }
 /*
 const itemStyle = {
